@@ -37,7 +37,7 @@ class ModelTrainer:
              )
            
              models = {
-                 "AdaboostBoost": AdaBoostRegressor(),
+                 "Adaboost Regression": AdaBoostRegressor(),
                  "GradientBoost": GradientBoostingRegressor(),
                  "Xgboost": XGBRegressor(),
                  "RandomForest": RandomForestRegressor(),
@@ -46,6 +46,8 @@ class ModelTrainer:
                  "Kneighbors": KNeighborsRegressor(),
                 "DecisionTree": DecisionTreeRegressor(),
              }
+
+             
 
              model_report:dict= evaluate_models(X_train=X_train, y_train = y_train, X_test = X_test, y_test = y_test, models = models)
              best_model_score = max(model_report.values())
@@ -75,7 +77,7 @@ class ModelTrainer:
              r2_square = r2_score(y_test, predicted)
              return r2_square
          except Exception as e:
-             raise CustomException
+             raise CustomException(e, sys)
 
     
 
